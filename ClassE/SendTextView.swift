@@ -10,12 +10,17 @@ import Foundation
 import UIKit
 import SnapKit
 
+protocol SendTextViewDelegate {
+    func startLikeAnimation()
+}
+
 class SendTextView: UIView, UIAlertViewDelegate {
     let textField = UITextField()
     let sendButton = UIButton()
     let cancelButton = UIButton()
     let likeButton = UIButton()
-    
+    var delegate: SendTextViewDelegate?
+        
     convenience init(a: Int) {
         self.init()
         
@@ -62,8 +67,10 @@ class SendTextView: UIView, UIAlertViewDelegate {
     }
     
     func sendMessage() {
-        if textField.text != "" {
-            SocketManager.shared.emit(message: textField.text!)
+        if let message = textField.text, message != "" {
+            SocketManager.shared.emit(message: message)
+            self.endEditing(true)
+            textField.text = ""
         } else {
             let alert = UIAlertView(title: "发送内容不能为空哦", message: "", delegate: self, cancelButtonTitle: "好的")
             alert.show()
@@ -75,6 +82,8 @@ class SendTextView: UIView, UIAlertViewDelegate {
     }
     
     func like() {
-        
+        self.endEditing(true)
+        self.delegate?.startLikeAnimation()
     }
+    
 }

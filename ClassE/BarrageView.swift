@@ -61,6 +61,9 @@ class BarrageView: UIView, SocketManagerDelegate {
     func SocketDidReciveMessage(message: String) {
         let label: UILabel = UILabel(frame: CGRect(x: 375, y: Int(arc4random()%530)/25*25, width: 100, height: 25))
         label.text = message
+        label.textColor = UIColor.white
+        label.shadowColor = UIColor.black
+        label.shadowOffset = CGSize(width: 1, height: 1)
         label.sizeToFit()
         self.addSubview(label)
         UIView.animate(withDuration: 2, delay: 0, options: .curveLinear, animations: {
