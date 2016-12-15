@@ -1,0 +1,15 @@
+PODS:
+  - SnapKit (3.0.2)
+  - Socket.IO-Client-Swift (8.1.2)
+
+DEPENDENCIES:
+  - SnapKit
+  - Socket.IO-Client-Swift
+
+SPEC CHECKSUMS:
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
+  Socket.IO-Client-Swift: 542d82e6708f9901b3f6c1d134fb60fa0d09d4d1
+
+PODFILE CHECKSUM: 3169b0ebee1a3d751f0f8b7a570d9da2fb956d51
+
+COCOAPODS: 1.1.0.rc.2
