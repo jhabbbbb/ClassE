@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>弹幕课堂</title>
+</head>
+<body>
+
+<script src="socket.io.js"></script>
+<script>
+  var socket = io('http://localhost:12345');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { reply: 'hello server' });
+  });
+
+  var textField = document.createElement("input");
+  textField.type = "text";
+  textField.name = "textField";
+  document.body.appendChild(textField);
+
+  var button = document.createElement("input");
+  button.type = "button";
+  button.value = "发送";
+  button.name = "sendButton";
+  button.onclick = function(){
+  	socket.emit("messageC2S", {message: "<br>"+textField.value});
+  	textField.value = "";
+  }
+  document.body.appendChild(button);
+  socket.on('messageS2C', function(data) {
+  	//document.write(data.message);
+  	var label = document.createElement("marquee");
+  	label.loop = 1;
+  	label.innerHTML = data.message;
+  	document.body.appendChild(label);
+
+  })
+</script>
+
+</body>
+</html>
