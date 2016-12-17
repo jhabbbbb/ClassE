@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>弹幕课堂</title>
+<title>BiLiClass</title>
 </head>
 <body>
 
 <script src="socket.io.js"></script>
 <script>
-  var socket = io('http://localhost:12345');
+  var socket = io('http://104.194.67.188:12345');
   socket.on('news', function (data) {
     console.log(data);
     socket.emit('my other event', { reply: 'hello server' });
@@ -20,21 +20,30 @@
 
   var button = document.createElement("input");
   button.type = "button";
-  button.value = "发送";
+  button.value = "Send";
   button.name = "sendButton";
   button.onclick = function(){
-  	socket.emit("messageC2S", {message: "<br>"+textField.value});
+  	socket.emit("messageC2S", {message: textField.value});
   	textField.value = "";
   }
   document.body.appendChild(button);
-  socket.on('messageS2C', function(data) {
-  	//document.write(data.message);
-  	var label = document.createElement("marquee");
-  	label.loop = 1;
-  	label.innerHTML = data.message;
-  	document.body.appendChild(label);
 
-  })
+  var button2 = document.createElement("input");
+  button2.type = "button";
+  button2.value = "Like";
+  button2.name = "likeButton";
+  button2.onclick = function(){
+    socket.emit("messageC2S", {message: "like"});
+  }
+  document.body.appendChild(button2);
+  // socket.on('messageS2C', function(data) {
+  // 	//document.write(data.message);
+  // 	var label = document.createElement("marquee");
+  // 	label.loop = 1;
+  // 	label.innerHTML = data.message;
+  // 	document.body.appendChild(label);
+
+  // })
 </script>
 
 </body>
