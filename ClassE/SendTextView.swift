@@ -10,18 +10,22 @@ import Foundation
 import UIKit
 import SnapKit
 
+enum SendTextViewStyle {
+    case normal
+}
+
 protocol SendTextViewDelegate {
     func startLikeAnimation()
 }
 
-class SendTextView: UIView, UIAlertViewDelegate {
+class SendTextView: UIView, UIAlertViewDelegate, UITextFieldDelegate {
     let textField = UITextField()
     let sendButton = UIButton()
     let cancelButton = UIButton()
     let likeButton = UIButton()
     var delegate: SendTextViewDelegate?
-        
-    convenience init(a: Int) {
+    var likeCount = 0
+    convenience init(style: SendTextViewStyle = .normal) {
         self.init()
         
         self.backgroundColor = UIColor.lightGray
@@ -40,6 +44,8 @@ class SendTextView: UIView, UIAlertViewDelegate {
         
         textField.borderStyle = .roundedRect
         textField.placeholder = "说点什么吧..."
+        textField.returnKeyType = .send
+        textField.delegate = self
         textField.snp.makeConstraints {
             make in
             make.left.equalTo(cancelButton.snp.right)
@@ -84,6 +90,15 @@ class SendTextView: UIView, UIAlertViewDelegate {
     func like() {
         self.endEditing(true)
         self.delegate?.startLikeAnimation()
+        if likeCount % 5 == 0 {
+            SocketManager.shared.emit(message: "like")
+        }
+        likeCount += 1
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        sendMessage()
+        return true
     }
     
 }
