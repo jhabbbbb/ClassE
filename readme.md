@@ -35,19 +35,19 @@
 
 - 基本布局：标题栏在左上角，刷新按钮在右上角，PPT 展示区域在正中间，下方有弹幕发送控件，包括输入框，发送按钮和点赞按钮
 
-![IMG_0493](C:\Users\Jinhongxu\Desktop\IMG_0493.PNG)
+![IMG_0493](IMG_0493.PNG)
 
 - 点击输入框进入输入界面，弹幕发送控件和 PPT 展示区域上浮，使它们不被键盘遮挡。
 
-![IMG_0495](C:\Users\Jinhongxu\Desktop\IMG_0495.PNG)
+![IMG_0495](IMG_0495.PNG)
 
 - 点击“赞”可以发出“like”信息，使屏幕上飘出爱心
 
-![IMG_0494](C:\Users\Jinhongxu\Desktop\IMG_0494.PNG)
+![IMG_0494](IMG_0494.PNG)
 
 - 接收弹幕后可以送屏幕上飘过展示
 
-![IMG_0496](C:\Users\Jinhongxu\Desktop\IMG_0496.PNG)
+![IMG_0496](IMG_0496.PNG)
 
 ### 服务端系统实现
 
