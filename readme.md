@@ -108,5 +108,3 @@ Controller-ViewController：
 ### License
 
 MIT
-
-![IMG_0493](C:\Users\Jinhongxu\Desktop\IMG_0493.PNG)
