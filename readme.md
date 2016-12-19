@@ -45,6 +45,10 @@
 
 ![IMG_0494](C:\Users\Jinhongxu\Desktop\IMG_0494.PNG)
 
+- 接收弹幕后可以送屏幕上飘过展示
+
+![IMG_0496](C:\Users\Jinhongxu\Desktop\IMG_0496.PNG)
+
 ### 服务端系统实现
 
 采用 Node.js 作为后台的开发语言，采用基于 TCP/IP 作为数据传输协议，利用开源的 Socket.IO 作为数据通信链路层封装工具。基于 Socket.IO 开发具有上述功能的服务器端。
